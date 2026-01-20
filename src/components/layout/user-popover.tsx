@@ -27,22 +27,18 @@ export function UserPopover() {
           className="relative h-9 w-9 rounded-full ring-1 ring-border/50 transition-all hover:ring-2 hover:ring-primary/50"
         >
           <Avatar className="h-9 w-9">
-            <AvatarFallback className="bg-linear-to-br from-primary/80 to-primary text-primary-foreground text-xs font-medium">
-              {initials}
-            </AvatarFallback>
+            <AvatarFallback className="text-xs font-medium">{initials}</AvatarFallback>
           </Avatar>
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-64 p-0" align="end" sideOffset={8}>
         <div className="flex items-center gap-3 p-4">
           <Avatar className="h-10 w-10">
-            <AvatarFallback className="bg-linear-to-br from-primary/80 to-primary text-primary-foreground text-sm font-medium">
-              {initials}
-            </AvatarFallback>
+            <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
           <div className="flex flex-col gap-0.5 overflow-hidden">
             <p className="text-sm font-semibold text-foreground truncate">{displayName}</p>
-            <p className="text-xs text-muted-foreground truncate">@{username}</p>
+            <p className="text-xs text-muted-foreground truncate">{username}</p>
           </div>
         </div>
         <Separator />

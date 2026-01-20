@@ -1,5 +1,6 @@
 import { toast } from 'sonner'
 import { api } from './axios'
+import { getApiErrorMessage } from './errors'
 
 export type LoginRequest = {
   username: string
@@ -142,7 +143,7 @@ export async function markManualReply(mentionId: string, payload: ManualReplyPay
 }
 
 export function handleError(error: unknown, fallback = 'Request failed') {
-  const message = error instanceof Error ? error.message : fallback
+  const message = getApiErrorMessage(error, fallback)
   toast.error(message)
   return message
 }

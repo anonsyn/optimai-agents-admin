@@ -1,5 +1,6 @@
 import axios, { AxiosError } from 'axios'
 import { toast } from 'sonner'
+import { getApiErrorMessage } from './errors'
 
 const API_ORIGIN = import.meta.env.VITE_API_ORIGIN || 'http://localhost:8000'
 
@@ -40,8 +41,7 @@ api.interceptors.response.use(
         toast.error('Session expired. Please login again.')
       }
     } else {
-      const message = response?.data?.detail || response?.data?.message || 'An error occurred'
-      toast.error(message)
+      toast.error(getApiErrorMessage(error, 'An error occurred'))
     }
 
     return Promise.reject(error)
