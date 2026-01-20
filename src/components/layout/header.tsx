@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 
+import { Logo } from '@/components/ui/logo'
 import { Sidebar } from './sidebar'
 import { ThemeToggle } from './theme-toggle'
 import { UserPopover } from './user-popover'
@@ -11,7 +12,7 @@ import { UserPopover } from './user-popover'
 export function Header() {
   return (
     <header className="flex h-16 items-center border-b bg-background px-6">
-      <div className="md:hidden">
+      <div className="flex items-center gap-2 md:hidden">
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon" className="-ml-2">
@@ -23,6 +24,7 @@ export function Header() {
             <Sidebar />
           </SheetContent>
         </Sheet>
+        <Logo className="h-4.5 w-auto" />
       </div>
       <div className="ml-auto flex items-center gap-2">
         <ThemeToggle />

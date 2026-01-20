@@ -2,6 +2,7 @@ import { LayoutDashboard, MessageSquareText, Users } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
+import { Logo } from '@/components/ui/logo'
 import { cn } from '@/lib/utils'
 
 const sidebarItems = [
@@ -28,8 +29,8 @@ export function Sidebar({ className }: { className?: string }) {
   return (
     <div className={cn('flex h-full w-64 flex-col border-r bg-card', className)}>
       <div className="flex h-16 items-center px-6 border-b">
-        <img src="/logo.svg" alt="Logo" className="h-8 w-auto" />
-        <span className="ml-2 text-lg font-bold">Mention Admin</span>
+        <Logo className="h-6 w-auto text-white" />
+        <span className="ml-2 text-md font-bold">Mention Admin</span>
       </div>
       <div className="flex-1 overflow-auto py-4">
         <nav className="grid gap-1 px-2">
