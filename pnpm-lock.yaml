@@ -11,9 +11,9 @@ importers:
       '@fontsource/chivo-mono':
         specifier: ^5.2.8
         version: 5.2.8
-      '@fontsource/manrope':
-        specifier: ^5.2.8
-        version: 5.2.8
+      '@fontsource/roboto':
+        specifier: ^5.2.9
+        version: 5.2.9
       '@radix-ui/react-avatar':
         specifier: ^1.1.11
         version: 1.1.11(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -502,8 +502,8 @@ packages:
   '@fontsource/chivo-mono@5.2.8':
     resolution: {integrity: sha512-IzOZoAgreM2q6vyXVadfVArxHh4tOva0pZuTYInwhiUAW1SMx7iAMEq1MY/mf3PCNb6L2nsR83ZcIumU59iJeQ==}
 
-  '@fontsource/manrope@5.2.8':
-    resolution: {integrity: sha512-gJHJmcuUk7qWcNCfcAri/DJQtXtBYqi9yKratr4jXhSo0I3xUtNNKI+igQIcw5c+m95g0vounk8ZnX/kb8o0TA==}
+  '@fontsource/roboto@5.2.9':
+    resolution: {integrity: sha512-ZTkyHiPk74B/aj8BZWbsxD5Yu+Lq+nR64eV4wirlrac2qXR7jYk2h6JlLYuOuoruTkGQWNw2fMuKNavw7/rg0w==}
 
   '@hono/node-server@1.19.7':
     resolution: {integrity: sha512-vUcD0uauS7EU2caukW8z5lJKtoGMokxNbJtBiwHgpqxEXokaHCBkQUmCHhjFB1VUTWdqj25QoMkMKzgjq+uhrw==}
@@ -3477,7 +3477,7 @@ snapshots:
 
   '@fontsource/chivo-mono@5.2.8': {}
 
-  '@fontsource/manrope@5.2.8': {}
+  '@fontsource/roboto@5.2.9': {}
 
   '@hono/node-server@1.19.7(hono@4.11.3)':
     dependencies:
