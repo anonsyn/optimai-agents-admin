@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 import { Toaster } from '@/components/ui/sonner'
 import { AuthProvider } from '@/context/auth-provider'
+import { ThemeProvider } from '@/context/theme-provider'
 import { AdminLayout } from '@/layouts/admin-layout'
 import { AccountsPage } from '@/pages/accounts-page'
 import { DashboardPage } from '@/pages/dashboard-page'
@@ -11,23 +12,25 @@ import { ProtectedRoute } from '@/routes/protected-route'
 
 export function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route element={<ProtectedRoute />}>
-            <Route element={<AdminLayout />}>
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
-              <Route path="/dashboard" element={<DashboardPage />} />
-              <Route path="/mentions" element={<MentionsPage />} />
-              <Route path="/accounts" element={<AccountsPage />} />
+    <ThemeProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route element={<ProtectedRoute />}>
+              <Route element={<AdminLayout />}>
+                <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/mentions" element={<MentionsPage />} />
+                <Route path="/accounts" element={<AccountsPage />} />
+              </Route>
             </Route>
-          </Route>
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
-        </Routes>
-      </BrowserRouter>
-      <Toaster richColors />
-    </AuthProvider>
+            <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          </Routes>
+        </BrowserRouter>
+        <Toaster richColors />
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
 

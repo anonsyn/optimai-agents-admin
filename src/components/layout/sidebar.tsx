@@ -1,8 +1,7 @@
-import { LayoutDashboard, LogOut, MessageSquareText, Users } from 'lucide-react'
+import { LayoutDashboard, MessageSquareText, Users } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
-import { useAuth } from '@/context/auth-context'
 import { cn } from '@/lib/utils'
 
 const sidebarItems = [
@@ -25,7 +24,6 @@ const sidebarItems = [
 
 export function Sidebar({ className }: { className?: string }) {
   const { pathname } = useLocation()
-  const { logout } = useAuth()
 
   return (
     <div className={cn('flex h-full w-64 flex-col border-r bg-card', className)}>
@@ -44,16 +42,6 @@ export function Sidebar({ className }: { className?: string }) {
             </Link>
           ))}
         </nav>
-      </div>
-      <div className="border-t p-4">
-        <Button
-          variant="ghost"
-          className="w-full justify-start gap-2 text-destructive hover:text-destructive hover:bg-destructive/10"
-          onClick={logout}
-        >
-          <LogOut className="h-4 w-4" />
-          Logout
-        </Button>
       </div>
     </div>
   )

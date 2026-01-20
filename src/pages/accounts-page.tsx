@@ -1,10 +1,11 @@
-import { useMemo, useState } from 'react'
-import { Pencil, Trash2 } from 'lucide-react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { Pencil, Trash2 } from 'lucide-react'
+import { useMemo, useState } from 'react'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Checkbox } from '@/components/ui/checkbox'
 import {
   Dialog,
   DialogContent,
@@ -155,9 +156,7 @@ export function AccountsPage() {
               <Input
                 id="username"
                 value={createForm.username}
-                onChange={(event) =>
-                  setCreateForm((prev) => ({ ...prev, username: event.target.value }))
-                }
+                onChange={(event) => setCreateForm((prev) => ({ ...prev, username: event.target.value }))}
                 placeholder="moderator"
                 required
               />
@@ -168,9 +167,7 @@ export function AccountsPage() {
                 id="password"
                 type="password"
                 value={createForm.password}
-                onChange={(event) =>
-                  setCreateForm((prev) => ({ ...prev, password: event.target.value }))
-                }
+                onChange={(event) => setCreateForm((prev) => ({ ...prev, password: event.target.value }))}
                 placeholder="••••••••"
                 required
               />
@@ -180,9 +177,7 @@ export function AccountsPage() {
               <Input
                 id="display-name"
                 value={createForm.display_name ?? ''}
-                onChange={(event) =>
-                  setCreateForm((prev) => ({ ...prev, display_name: event.target.value }))
-                }
+                onChange={(event) => setCreateForm((prev) => ({ ...prev, display_name: event.target.value }))}
                 placeholder="Mentions Ops"
               />
             </div>
@@ -217,14 +212,12 @@ export function AccountsPage() {
                   return (
                     <label
                       key={permission.value}
-                      className="flex items-center gap-2 rounded-full border border-border px-3 py-1 text-sm"
+                      className="flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm cursor-pointer hover:bg-muted/50 transition-colors"
                     >
-                      <input
-                        type="checkbox"
-                        className="h-4 w-4"
+                      <Checkbox
                         checked={checked}
                         disabled={permissionsDisabled}
-                        onChange={() => {
+                        onCheckedChange={() => {
                           if (permissionsDisabled) {
                             return
                           }
@@ -243,17 +236,13 @@ export function AccountsPage() {
                     </label>
                   )
                 })}
-                {permissionsDisabled && (
-                  <Badge variant="secondary">Admins receive all permissions</Badge>
-                )}
+                {permissionsDisabled && <Badge variant="secondary">Admins receive all permissions</Badge>}
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Switch
                 checked={createForm.is_active}
-                onCheckedChange={(value) =>
-                  setCreateForm((prev) => ({ ...prev, is_active: value }))
-                }
+                onCheckedChange={(value) => setCreateForm((prev) => ({ ...prev, is_active: value }))}
               />
               <span className="text-sm text-muted-foreground">Account active</span>
             </div>
@@ -298,9 +287,7 @@ export function AccountsPage() {
                     <div className="text-xs text-muted-foreground">{account.display_name || '—'}</div>
                   </TableCell>
                   <TableCell>
-                    <Badge variant={account.role === 'admin' ? 'secondary' : 'outline'}>
-                      {account.role}
-                    </Badge>
+                    <Badge variant={account.role === 'admin' ? 'secondary' : 'outline'}>{account.role}</Badge>
                   </TableCell>
                   <TableCell className="max-w-[220px]">
                     <div className="flex flex-wrap gap-2">
@@ -372,18 +359,14 @@ export function AccountsPage() {
               <Label>Username</Label>
               <Input
                 value={editForm.username ?? ''}
-                onChange={(event) =>
-                  setEditForm((prev) => ({ ...prev, username: event.target.value }))
-                }
+                onChange={(event) => setEditForm((prev) => ({ ...prev, username: event.target.value }))}
               />
             </div>
             <div className="space-y-2">
               <Label>Display name</Label>
               <Input
                 value={editForm.display_name ?? ''}
-                onChange={(event) =>
-                  setEditForm((prev) => ({ ...prev, display_name: event.target.value }))
-                }
+                onChange={(event) => setEditForm((prev) => ({ ...prev, display_name: event.target.value }))}
               />
             </div>
             <div className="space-y-2">
@@ -391,9 +374,7 @@ export function AccountsPage() {
               <Input
                 type="password"
                 value={editForm.password ?? ''}
-                onChange={(event) =>
-                  setEditForm((prev) => ({ ...prev, password: event.target.value }))
-                }
+                onChange={(event) => setEditForm((prev) => ({ ...prev, password: event.target.value }))}
                 placeholder="Leave blank to keep"
               />
             </div>
@@ -428,14 +409,12 @@ export function AccountsPage() {
                   return (
                     <label
                       key={permission.value}
-                      className="flex items-center gap-2 rounded-full border border-border px-3 py-1 text-sm"
+                      className="flex items-center gap-2 rounded-full border border-border px-3 py-1.5 text-sm cursor-pointer hover:bg-muted/50 transition-colors"
                     >
-                      <input
-                        type="checkbox"
-                        className="h-4 w-4"
+                      <Checkbox
                         checked={checked}
                         disabled={updatePermissionsDisabled}
-                        onChange={() => {
+                        onCheckedChange={() => {
                           if (updatePermissionsDisabled) {
                             return
                           }
@@ -454,17 +433,13 @@ export function AccountsPage() {
                     </label>
                   )
                 })}
-                {updatePermissionsDisabled && (
-                  <Badge variant="secondary">Admins receive all permissions</Badge>
-                )}
+                {updatePermissionsDisabled && <Badge variant="secondary">Admins receive all permissions</Badge>}
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Switch
                 checked={editForm.is_active ?? true}
-                onCheckedChange={(value) =>
-                  setEditForm((prev) => ({ ...prev, is_active: value }))
-                }
+                onCheckedChange={(value) => setEditForm((prev) => ({ ...prev, is_active: value }))}
               />
               <span className="text-sm text-muted-foreground">Account active</span>
             </div>

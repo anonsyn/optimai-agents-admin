@@ -1,7 +1,12 @@
-import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+
 import { Sidebar } from './sidebar'
+import { ThemeToggle } from './theme-toggle'
+import { UserPopover } from './user-popover'
 
 export function Header() {
   return (
@@ -19,7 +24,11 @@ export function Header() {
           </SheetContent>
         </Sheet>
       </div>
-      <div className="ml-auto flex items-center gap-4">{/* Breadcrumbs or other header actions can go here */}</div>
+      <div className="ml-auto flex items-center gap-2">
+        <ThemeToggle />
+        <Separator orientation="vertical" className="h-6" />
+        <UserPopover />
+      </div>
     </header>
   )
 }

@@ -60,6 +60,7 @@ export type MentionSummary = {
   author_name?: string | null
   author_username?: string | null
   ingested_at?: string | null
+  is_skipped?: boolean | null
 }
 
 export type ReplySummary = {
@@ -83,10 +84,23 @@ export type RepliedMentionsResponse = {
   total: number
 }
 
+export type ManualReplyPayload = {
+  reply_text?: string | null
+  reply_url?: string | null
+  reply_tweet_id?: string | null
+  reply_username?: string | null
+  status?: 'posted' | 'skipped'
+}
+
 // --- API Methods ---
 
 export async function adminLogin(payload: LoginRequest) {
   const { data } = await api.post<LoginResponse>('/api/auth/login', payload)
+  return data
+}
+
+export async function fetchCurrentUser() {
+  const { data } = await api.get<AccountResponse>('/api/auth/me')
   return data
 }
 
@@ -111,12 +125,19 @@ export async function deleteAccount(accountId: string) {
 
 export async function fetchRepliedMentions(params: {
   status?: string
+  q?: string
+  search_type?: 'all' | 'author' | 'tweet' | 'reply'
   limit: number
   offset: number
 }) {
   const { data } = await api.get<RepliedMentionsResponse>('/api/mentions/replied', {
     params,
   })
+  return data
+}
+
+export async function markManualReply(mentionId: string, payload: ManualReplyPayload) {
+  const { data } = await api.post(`/api/mentions/replied/${mentionId}/manual`, payload)
   return data
 }
 

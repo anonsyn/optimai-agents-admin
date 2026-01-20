@@ -1,7 +1,16 @@
 import { createContext, useContext } from 'react'
 
+export type UserInfo = {
+  id?: string
+  username: string
+  display_name?: string | null
+  role: 'admin' | 'moderator'
+  permissions: string[]
+}
+
 export type AuthContextValue = {
   token: string | null
+  user: UserInfo | null
   isAuthenticated: boolean
   isLoading: boolean
   login: (username: string, password: string) => Promise<void>
